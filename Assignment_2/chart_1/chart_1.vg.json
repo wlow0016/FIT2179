@@ -1,9 +1,38 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title" : "Energy Consumption Rate",
+  "data" : {
+    "url": "https://githubusercontent.com/wlow0016/FIT2179/main/Assignment_2/chart_1/data/energy_use.csv?raw=true",
+    "format" : {"type": "csv"}
+  },
+  "transform" : [
+    {
+      "fold" : [
+        "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017",
+        "2018", "2019", "2020", "2021", "2022", "2023"
+      ],
+      "as" : ["Year", "Energy Use"]
+    },
+    {
+      "filter": "datum['Energy Use'] != null && datum['Energy Use'] != ''"
+    }
+  ],
   "mark": "line",
   "encoding": {
-    "x": {"field": "Year", "type": "ordinal"},
-    "y": {"field": "Energy use (kg of oil per capita)", "type": "quantitative"}
+    "x": {
+      "field": "Year",
+      "type": "quantitative"
+    },
+
+    "y": {
+      "field": "Energy use",
+      "type": "quantitative",
+      "title" : "Energy use (kg of oil equivalent per capita)"
+    },
+    "color" : {
+      "field": "Country Name",
+      "type" : "nominal", 
+      "title" : "Country"
+    } 
   }
 }
