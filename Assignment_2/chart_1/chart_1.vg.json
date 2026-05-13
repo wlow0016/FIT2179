@@ -1,0 +1,9 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title" : "Energy Consumption Rate",
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal"},
+    "y": {"field": "Energy use (kg of oil per capita)", "type": "quantitative"}
+  }
+}
